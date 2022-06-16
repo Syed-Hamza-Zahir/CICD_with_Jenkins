@@ -38,6 +38,8 @@ Other advatanges inclide:
 
 ## SSH Connection Between Github and Jenkins 
 
+![ssh.png](/ssh.png)
+
 **Step 1: Generate a new key**
 - Generate a new ssh key in your localhost and name is syed-jenkins. 
 
