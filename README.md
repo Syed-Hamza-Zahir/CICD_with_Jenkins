@@ -26,3 +26,66 @@ Other advatanges inclide:
 - User-friendly interface
 - Accessable environment configuration 
 - Supports distributed builds with master-slave architecture.
+
+## Setting up a Job in Jenkins 
+ 
+**Step 1: Create new item**
+- On the left you should see `New item`, select that. 
+
+**Step 2: Create job**
+- Under `Enter an item name` write the appropriate name for your job 
+
+
+## SSH Connection Between Github and Jenkins 
+
+**Step 1: Generate a new key**
+- Generate a new ssh key in your localhost and name is syed-jenkins. 
+
+#### Step 2: Generate ssh key 
+You must generate a ssh key to use for authentication. 
+
+1. Open the terminal 
+   
+2. Create a .ssh directory `mkdir .ssh` then open the directory `cd .ssh`
+
+3. Now, paste the text below, ensuring to use the email associated with you Github account.
+
+   `$ ssh-keygen -t rsa -b 4096 -C "zahir.hamza688@gmail.com"`
+ 
+
+   The Following prompts will appear. For each of these prompts  press enter
+   This should generate a public and private key pair 
+   
+> Enter a file in which to save the key (/Users/you/.ssh/eng114): [Press enter]
+
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+
+> Enter same passphrase again: [Type passphrase again]
+
+4. Copy the `.pub` then open Github
+
+5. When on Github, open `Settings` then `SSH and GPG keys` then click `New SSH key` . Now paste here
+
+#### Step 3: Initializing a repo
+
+- `git pull`
+
+- `git status` To ensure only required files are added to be sent
+
+- `git add .` To add git all files or `git add 'name_of_the_file'`
+
+- `git commit -m "message"` To save changes 
+
+- `git push -u'` To push changes to Github 
+
+**Clone a specific remote branch**
+- `git clone git@github.com:Syed-Hamza-Zahir/eng114_devops.git`
+
+**Step 2: Copy Key into Github**
+- Go into your repo and select `Settings`
+- Select `Deploy Keys` and select `Add deploy key`
+- Copy the public ssh key into `key` and title syed-jenkins 
+- Now select `Add key`
+
+**Step 3: Connect to Jenckins**
+- Create a new Jenkins item and select `Freestyle Project`
