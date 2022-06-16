@@ -56,7 +56,7 @@ You must generate a ssh key to use for authentication.
    The Following prompts will appear. For each of these prompts  press enter
    This should generate a public and private key pair 
    
-> Enter a file in which to save the key (~/.ssh/eng114): [Press enter]
+> Enter a file in which to save the key (~/.ssh/): [eng114]
 
 > Enter passphrase (empty for no passphrase): [Type a passphrase]
 
