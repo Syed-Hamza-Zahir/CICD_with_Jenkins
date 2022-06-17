@@ -137,5 +137,5 @@ Setting up the webhook allows GitHub to trigger Jenkins to start a new build whe
   npm test
 - - **Post build actions**:
 - match configuration as so and click save:
-- [conf.png](/conf.png)
+- ![conf.png](/conf.png)
   
