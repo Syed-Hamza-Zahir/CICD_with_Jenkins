@@ -91,3 +91,51 @@ You must generate a ssh key to use for authentication.
 
 **Step 3: Connect to Jenckins**
 - Create a new Jenkins item and select `Freestyle Project`
+-
+- Set up the following configurations:
+
+- **Discard old builds**: 3
+- **Github project**: Insert GitHub HTTPS repo link 
+- **Restrict where this project can be run**: `sparta-ubuntu-node`
+- **Git**:
+    - **Repository URL**: Insert GitHub SSH repo link 
+    - **Credential**: Add -> Jenkins -> Key -> Insert private ssh key 
+- **Branches to build**: */main
+- **Github hook trigger for GITScm polling**: check this option 
+- **Execute code**:
+  cd app
+  npm install
+  npm test
+
+## Setting Up a Webhook
+Setting up the webhook allows GitHub to trigger Jenkins to start a new build whenever a new commit is pushed.
+
+- In the GitHub repository that is to be linked to Jenkins, create a new Webhook (Settings-->Webhooks-->Add webhook)
+
+- Payload URL: Add the URL (usually specified with ip and port) with /github-webhook/ appended at the end
+
+- Content type: Select application/json
+
+- Any new pushes to the repository should now trigger a new build, shown in 
+
+- Build History where the Console Output can be read for each individual build
+
+## Setting up a second job to merge dev and main branch upon test success 
+- Set up the following configurations:
+
+- **Discard old builds**: 3
+- **Github project**: Insert GitHub HTTPS repo link 
+- **Restrict where this project can be run**: `sparta-ubuntu-node`
+- **Git**:
+    - **Repository URL**: Insert GitHub SSH repo link 
+    - **Credential**: Add -> Jenkins -> Key -> Insert private ssh key 
+- **Branches to build**: */dev3
+- **Github hook trigger for GITScm polling**: check this option
+- - **Execute code**:
+  cd app
+  npm install
+  npm test
+- - **Post build actions**:
+- match configuration as so and click save:
+- [conf.png](/conf.png)
+  
