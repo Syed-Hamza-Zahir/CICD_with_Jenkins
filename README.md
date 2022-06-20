@@ -140,4 +140,5 @@ Setting up the webhook allows GitHub to trigger Jenkins to start a new build whe
 - - **Post build actions**:
 - match configuration as so and click save:
 - ![conf.png](/conf.png)
-  
+
+# ![CICD.png](/CICD.png)
