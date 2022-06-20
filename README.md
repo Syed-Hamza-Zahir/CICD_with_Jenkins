@@ -184,5 +184,5 @@ The Source Code Management windows has Git, my git repo, and main branch selecte
 ### Step 5
 The build enviroment windown takes the ssh key, eng114.pem to connect Jenkins to the AWS EC2 instance.
 
-Our set up lows like now:
+Our set up looks like this now:
 ![plan.png](plan.png)
