@@ -140,5 +140,49 @@ Setting up the webhook allows GitHub to trigger Jenkins to start a new build whe
 - - **Post build actions**:
 - match configuration as so and click save:
 - ![conf.png](/conf.png)
+# CD
 
-# ![CICD.jpg](/CICD.jpg)
+## Full plan
+![CICD.jpg](/CICD.jpg)
+
+Now we create another job that pushes the recently merged code from the main branch on to a new EC2 machine. This is now our live environment.
+
+### Step 1
+Create a new EC2 instance that allows the same ports as well as ssh on port 22 from the Jenkis IP.
+
+### Step 2
+Create a new job in Jenkins that gets triggered when the previous one is sucessful. 
+
+### Step 3
+This job holds code thats runs on the EC2 instance: 
+
+```
+#!/bin/bash
+scp -v -r -o StrictHostKeyChecking=no app/ ubuntu@34.245.63.29:/home/ubuntu/
+ssh -A -o "StrictHostKeyChecking=no" ubuntu@34.245.63.29 << EOF
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install nginx -y
+
+sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt install nodejs -y
+sudo apt install npm -y
+sudo apt install python-software-properties -y
+
+sudo rm -rf etc/nginx/sites-available/default
+sudo cp default /etc/nginx/sites-available/
+sudo nginx -t
+sudo systemctl restart nginx
+sudo systemctl enable nginx
+cd app
+npm install
+nohup node app.js > /dev/null 2>&1 &
+
+```
+### Step 4
+The Source Code Management windows has Git, my git repo, and main branch selected
+
+### Step 5
+The build enviroment windown takes the ssh key, eng114.pem to connect Jenkins to the AWS EC2 instance.
+
+Our set up lows like now:
+![plan.png](plan.png)
