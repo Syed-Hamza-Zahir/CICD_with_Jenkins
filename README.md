@@ -89,6 +89,8 @@ You must generate a ssh key to use for authentication.
 - Copy the public ssh key into `key` and title syed-jenkins 
 - Now select `Add key`
 
+ ![pipeline.jpg](/pipeline.jpg)
+
 **Step 3: Connect to Jenckins**
 - Create a new Jenkins item and select `Freestyle Project`
 -
